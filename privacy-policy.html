@@ -127,8 +127,7 @@
       <a href="index.html">← Home</a>
       <a href="support.html">Support</a>
       <a href="marketing.html">Marketing</a>
-      <button class="danger" type="button" onclick="closePolicyWebView()">Close in App</button>
-    </div>
+          </div>
 
     <section class="shell">
       <div class="hero">
@@ -186,7 +185,6 @@
           </ul>
         </div>
 
-        <div id="status" aria-live="polite"></div>
 
         <div class="footer">
           <div>Last updated: March 27, 2026</div>
@@ -196,37 +194,5 @@
     </section>
   </div>
 
-  <script>
-    function closePolicyWebView() {
-      const status = document.getElementById('status');
-      status.textContent = 'Attempting to close the in-app web view…';
-
-      try {
-        if (window.Android && typeof window.Android.closeWebView === 'function') {
-          window.Android.closeWebView();
-          status.textContent = 'Close request sent through Android interface.';
-          return;
-        }
-      } catch (e) {}
-
-      try {
-        if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.closeWebView) {
-          window.webkit.messageHandlers.closeWebView.postMessage('close');
-          status.textContent = 'Close request sent through iOS WebKit bridge.';
-          return;
-        }
-      } catch (e) {}
-
-      try {
-        window.location.href = 'winterfishingmaster://close-webview';
-        setTimeout(function () {
-          status.textContent = 'Native close scheme triggered. If nothing happens, please close this screen manually.';
-        }, 500);
-        return;
-      } catch (e) {}
-
-      status.textContent = 'Native bridge is not available in this browser. Please close this page manually.';
-    }
-  </script>
 </body>
 </html>
