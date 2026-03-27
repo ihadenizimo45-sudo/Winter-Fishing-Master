@@ -38,10 +38,17 @@
     }
     .top {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
       flex-wrap: wrap;
       margin-bottom: 18px;
+    }
+    .top a {
+      min-width: 152px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     a, button {
       border: 0;
@@ -117,7 +124,8 @@
     @media (max-width: 640px) {
       .wrap { width: min(100% - 16px, 960px); }
       .hero, .body { padding-left: 16px; padding-right: 16px; }
-      .top a, .top button { flex: 1 1 calc(50% - 8px); text-align: center; }
+      .top { gap: 10px; }
+      .top a, .top button { flex: 1 1 calc(50% - 8px); min-width: 0; text-align: center; }
     }
   </style>
 </head>
